@@ -2,7 +2,6 @@ public class OopsBanner {
     public static void main(String[] args) {
 
         String[] banner = {
-
             String.join("", " *****   ", " *****   ", " ******  ", " ***** "),
             String.join("", "*     *  ", "*     *  ", "*     *  ", "*     *"),
             String.join("", "*     *  ", "*     *  ", "*     *  ", "*"),
@@ -12,7 +11,6 @@ public class OopsBanner {
             String.join("", " *****   ", " *****   ", "*        ", " ***** ")
         };
 
-        // Loop to print banner
         for (String line : banner) {
             System.out.println(line);
         }
