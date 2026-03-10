@@ -1,14 +1,14 @@
 #include <iostream>
-#include <vector>
+#include <map>
 using namespace std;
 
-class CharacterPattern {
+class BannerCharacterArray {
 public:
-    char character;
     string pattern[5];
 
-    CharacterPattern(char c, string p[5]) {
-        character = c;
+    BannerCharacterArray() {}
+
+    BannerCharacterArray(string p[5]) {
         for(int i = 0; i < 5; i++) {
             pattern[i] = p[i];
         }
@@ -16,6 +16,8 @@ public:
 };
 
 int main() {
+
+    map<char, BannerCharacterArray> bannerMap;
 
     string O[5] = {
         " *** ",
@@ -41,21 +43,15 @@ int main() {
         "**** "
     };
 
-    vector<CharacterPattern> patterns;
-
-    patterns.push_back(CharacterPattern('O', O));
-    patterns.push_back(CharacterPattern('P', P));
-    patterns.push_back(CharacterPattern('S', S));
+    bannerMap['O'] = BannerCharacterArray(O);
+    bannerMap['P'] = BannerCharacterArray(P);
+    bannerMap['S'] = BannerCharacterArray(S);
 
     string word = "OOPS";
 
-    for(int i = 0; i < 5; i++) {
+    for(int row = 0; row < 5; row++) {
         for(char c : word) {
-            for(auto &cp : patterns) {
-                if(cp.character == c) {
-                    cout << cp.pattern[i] << "  ";
-                }
-            }
+            cout << bannerMap[c].pattern[row] << "  ";
         }
         cout << endl;
     }
